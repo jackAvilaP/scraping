@@ -45,26 +45,39 @@ let counterLike = 0;
     await page.keyboard.press("Enter", {
       delay: 100,
     });
-    await page.waitForSelector("button[aria-label='Mostrar todos los filtros. Al hacer clic en este botón, se muestran todas las opciones de filtros disponibles.']", {
+
+    await page.waitForSelector(
+      "button[aria-label='Mostrar todos los filtros. Al hacer clic en este botón, se muestran todas las opciones de filtros disponibles.']",
+      {
         visible: true,
-    });
+      }
+    );
 
     await page.click(
       "button[aria-label='Mostrar todos los filtros. Al hacer clic en este botón, se muestran todas las opciones de filtros disponibles.']"
     );
 
     await page.waitForSelector("input[value='116859411']", {
-        visible: true,
+      visible: true,
     });
 
     await page.click("input[value='116859411']", {
-        delay: 100,
+      clickCount: 5,
     });
 
-    await page.click("button[id='ember424']");
-    
+    await page.click(
+      "button[aria-label='Aplicar los filtros actuales para mostrar resultados']",
+      {
+        clickCount: 4,
+      }
+    );
+    /* 
+//    await page.click("a[class='app-aware-link ']");
+await page.waitForSelector("a[class='app-aware-link ']", {
+  visible: true,
+});*/
 
-
+    //https://www.linkedin.com/jobs/search/?currentJobId=3302559308&keywords=full%20stack&start=75
   } catch (error) {
     console.error(error);
   }
